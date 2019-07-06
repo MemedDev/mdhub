@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MdHub Test Page</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="test-container"></div>
+
+	<script type="text/javascript" src="../../dist/mdhub.umd.js"></script>
+
+	<script type="text/javascript">
+		let currentLocation = window.location.href.replace('index.html', '');
+
+		MdHub.init({
+		  apiKey: 'this_is_the_api_key',
+		  container: 'test-container'
+		});
+
+		MdHub.event.listen('core:moduleInit', (moduleInfo) => {
+			MdHub.module.show(moduleInfo.name);
+		});
+
+		MdHub.module.add('module.one', currentLocation + 'module.one/index.html');
+		MdHub.module.add('module.two', currentLocation + 'module.two/index.html');
+	</script>
+</body>
+</html>

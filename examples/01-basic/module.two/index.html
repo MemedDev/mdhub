@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module Two</title>
+	<meta charset="utf-8">
+
+	<style type="text/css">
+		body {
+			background: black;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<h1>Hi, I'm module two</h1>
+
+	<div id="text"></div>
+
+	<div><button id="clear">Clear Input</button></div>
+
+	<script type="text/javascript" src="../../../dist/mdhub.umd.js"></script>
+
+	<script type="text/javascript">
+		let buttonClear = document.getElementById('clear');
+		let divText = document.getElementById('text');
+		let module = {
+			name: 'module.two',
+			version: '1.0',
+			build: '1',
+		};
+
+		MdHub.init({
+		  name: module.name,
+		  version: module.version,
+		  build: module.build,
+		  options: {
+		  	styles: {
+				zIndex: '2147483638',
+				width: '670px',
+				left: 'auto',
+				right: '0',
+		  	}
+		  },
+
+		  events: {
+		  	'textInput:change': function textInputChange(text) {
+		  		divText.innerHTML = text;
+		  	}
+		  }
+		});
+
+		buttonClear.addEventListener('click', () => {
+			MdHub.command.send('module.one', 'clear');
+		});
+	</script>
+</body>
+</html>

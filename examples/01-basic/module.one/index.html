@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module One</title>
+	<meta charset="utf-8">
+
+	<style type="text/css">
+		input {
+			width: 40%;
+		}		
+	</style>
+</head>
+<body>
+	<h1>Hi, I'm module one</h1>
+
+	<div><input type="text" id="text" placeholder="Type some text here, I'll trigger an event"></div>
+
+	<script type="text/javascript" src="../../../dist/mdhub.umd.js"></script>
+
+	<script type="text/javascript">
+		let module = {
+			name: 'module.one',
+			version: '1.0',
+			build: '1',
+		};
+		let textInput = document.getElementById('text');
+
+		MdHub.init({
+		  name: module.name,
+		  version: module.version,
+		  build: module.build,
+		  commands: {
+		  	clear: function clear() {
+		  		textInput.value = '';
+		  		MdHub.event.trigger('textInput:change', textInput.value);
+		  	}
+		  }
+		});
+
+		textInput.addEventListener('keyup', (event) => {
+			MdHub.event.trigger('textInput:change', textInput.value);
+		});
+	</script>
+</body>
+</html>
