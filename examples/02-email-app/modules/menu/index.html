@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Menu</title>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+
+	<style type="text/css">
+		body {
+			background-color: #1b1c1d;
+		}
+
+		.ui.vertical.menu {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+
+	<script type="text/javascript" src="../../../../../dist/mdhub.umd.js"></script>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.5.1/babel.min.js"></script>
+	<script crossorigin src="https://cdn.jsdelivr.net/npm/semantic-ui-react@0.87.2/dist/umd/semantic-ui-react.min.js"></script>
+	<script type="text/jsx" src="js/app.jsx"></script>
+	
+	<script type="text/javascript">
+		let module = {
+			name: 'menu',
+			version: '1.0',
+			build: '1',
+		};
+
+		MdHub.init({
+		  name: module.name,
+		  version: module.version,
+		  build: module.build,
+		  options: {
+		  	styles: {
+		  		position: 'absolute',
+				zIndex: '2147483638',
+				width: '30%',
+				left: '0',
+				right: 'auto',
+		  	}
+		  },
+		  events: {
+		  	'core:moduleInit'(moduleInfo) {
+		  		// Initialize the application with 'inbox'
+		  		if (moduleInfo.name === 'api') {
+		  			MdHub.event.trigger('labelSelected', 'inbox');
+		  		}
+		  	},
+		  }
+		});
+	</script>
+</body>
+</html>

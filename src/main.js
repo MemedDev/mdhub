@@ -10,7 +10,7 @@ class MdHub {
   constructor() {
     this.debug = false;
     this.domain = null;
-    this.modulesPath = '/modules'
+    this.modulesPath = 'modules'
     this.initialized = false;
     this.mode = 'server';
     this.options = {};

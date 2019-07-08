@@ -247,7 +247,6 @@ class Server {
     if (! document.getElementById(containerId)) {
       div = document.createElement('DIV');
       div.setAttribute('id', containerId);
-      div.style.display = 'none';
 
       body = document.getElementsByTagName('body')[0];
       body.appendChild(div);

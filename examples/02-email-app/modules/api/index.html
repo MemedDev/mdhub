@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>This is an invisible module, used to centralize the communication with the API.</h1>
+
+	<script type="text/javascript" src="../../../../../dist/mdhub.umd.js"></script>
+	<script type="text/javascript">
+		let module = {
+			name: 'api',
+			version: '1.0',
+			build: '1',
+		};
+		let fakeDatabase = {
+			inbox: [
+				{
+		          action: '1 min',
+		          headline: 'This is the list module',
+		          title: 'Using Vue + Vuetify',
+		          subtitle: "All the data came from the invisible API module"
+		        },
+				{
+		          action: '15 min',
+		          headline: 'Brunch this weekend?',
+		          title: 'Ali Connors',
+		          subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+		        },
+		        {
+		          action: '2 hr',
+		          headline: 'Summer BBQ',
+		          title: 'me, Scrott, Jennifer',
+		          subtitle: "Wish I could come, but I'm out of town this weekend."
+		        },
+		        {
+		          action: '6 hr',
+		          headline: 'Oui oui',
+		          title: 'Sandra Adams',
+		          subtitle: 'Do you have Paris recommendations? Have you ever been?'
+		        },
+		        {
+		          action: '12 hr',
+		          headline: 'Birthday gift',
+		          title: 'Trevor Hansen',
+		          subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+		        },
+		        {
+		          action: '18hr',
+		          headline: 'Recipe to try',
+		          title: 'Britta Holt',
+		          subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+		        }
+			],
+			spam: [
+				{
+		          action: '1 min',
+		          headline: 'AOL',
+		          title: 'Free dialup connection',
+		          subtitle: "Do you want free internet?"
+		        }
+			],
+			updates: [
+				{
+		          action: '1 day',
+		          headline: 'MdHub is amazing',
+		          title: 'Gabriel Couto',
+		          subtitle: "Do you need a micro front-end app?"
+		        }
+			]
+		};
+
+		MdHub.init({
+		  name: module.name,
+		  version: module.version,
+		  build: module.build,
+		  commands: {
+		  	getEmails(label, resolve) {
+		  		resolve(fakeDatabase[label]);
+		  	}
+		  }
+		});
+	</script>
+</body>
+</html>

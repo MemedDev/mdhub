@@ -96,9 +96,9 @@ class PostMessage {
 
           // Call the comand callback
           this._MdHub.command.list[message.name].call(this, message.data, function success(result) {
-            this._MdHub.command.resolve(message, result);
+            self._MdHub.command.resolve(message, result);
           }, function error(result) {
-            this._MdHub.command.reject(message, result);
+            self._MdHub.command.reject(message, result);
           });
         }
       } else if (message.type === 'event') {
