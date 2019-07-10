@@ -47,7 +47,7 @@ class Module {
     var iframeContainer = document.getElementById('iframe-container');
     var iframeUrl = url;
     var moduleName;
-    var protocol = this._MdHub.domain.indexOf('//') !== false ? '' : '//';
+    var protocol = this._MdHub.domain.indexOf('//') !== -1 ? '' : '//';
 
     if (!name || typeof name !== 'string') {
       throw new Error('The "name" parameter is required and need to be a string');
@@ -58,7 +58,7 @@ class Module {
     if (this.list[moduleName]) return;
 
     if (!iframeUrl) {
-      iframeUrl = protocol + this._MdHub.domain + this._MdHub.modulesPath + '/' + name + '/?_=' + Date.now();
+      iframeUrl = protocol + this._MdHub.domain + '/' + this._MdHub.modulesPath + '/' + name + '/?_=' + Date.now();
     }
 
     // Create the module iframe
@@ -129,6 +129,11 @@ class Module {
     moduleData.options = module.options;
     moduleData.require = module.require;
     moduleData.window.allowtransparency = 'true';
+
+    // Applies the default iframe style
+    for (attribute in this.stylesDefault) {
+      moduleData.window.style[attribute] = this.stylesDefault[attribute];
+    }
 
     // Applies the styles sent on options
     if (moduleData.options && moduleData.options.styles) {

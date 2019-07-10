@@ -45,7 +45,7 @@ class MdHub {
       // Verify if the browser can only send data as string on postMessage
       this.postMessage.checkSendAsString();
 
-      if (options.apiKey) {
+      if (options.apiKey || window.parent === window) {
         if (window.hasOwnProperty('module')) {
           options.build = window.module.build;
           options.version = window.module.version;
